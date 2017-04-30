@@ -1,0 +1,35 @@
+{
+  "photoSrc": "photo_small.jpg",
+  "firstname": "Volodymyr",
+  "lastname": "Ilemskyi",
+  "fullname": "Volodymyr Ilemskyi",
+  "generalInfo": [
+    {
+      "header": "living's place:",
+      "value": "Ivano-Frankivsk, Ukraine"
+    },
+    {
+      "header": "date of birth:",
+      "value": "December 25, 1980"
+    },
+    {
+      "header": "phone:",
+      "value": "+38-050-373-4002"
+    },
+    {
+      "header": "e-mail:",
+      "value": "v.ilemsky@gmail.com"
+    },
+    {
+      "header": "skype:",
+      "value": "vovail80"
+    }
+  ],
+  "skills": [
+    "Technical: HTML, CSS, JavaScript, Typescript, Angular(v.2+), React, Redux",
+    "Software: Atom, WebStorm, Chrome Devtools, Microsoft Office packages, Adobe Photoshop",
+    "Personal qualities: Strong sales and communication skills, high self-motivation, ability to learn quickly, results-driven, hard worker, responsible, well organized, productive team member"
+  ],
+  "showSkills": "",
+  "showSkillsBtnLabel": "Show skills & personal qualities"
+}
