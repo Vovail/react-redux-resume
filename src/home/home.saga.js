@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 
-const homeDataApi = () => {
+export const homeDataApi = () => {
     return fetch('data-home.json')
         .then(response => {
             console.log(response.body);
@@ -15,7 +15,7 @@ const homeDataApi = () => {
         });
 };
 
-function* getHomeData () {
+export function* getHomeData () {
     try {
         let data = yield call(homeDataApi);
         yield put({type: 'HOME_DATA_SUCCESS', payload: data});

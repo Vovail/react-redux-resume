@@ -1,9 +1,4 @@
 {
-  "skills": [
-  "Technical: HTML, CSS, JavaScript, Typescript, Angular(v.2+), React, Redux, GIT",
-  "Software: Atom, WebStorm, Chrome Devtools, Microsoft Office packages, Adobe Photoshop",
-  "Personal qualities: Strong sales and communication skills, high self-motivation, ability to learn quickly, results-driven, hard worker, responsible, well organized, productive team member"
-],
   "work": [
     {
       "employer": "JSC “Delta Bank”",
@@ -82,12 +77,12 @@
   "education": {
     "it":{
       "school":"SoftServe IT Academy",
-      "specialty": "WEB-UI/Angular",
+      "speciality": "WEB-UI/Angular",
       "dates":"September 2016 - December 2016"
     },
     "main": {
       "school": "Ivano-Frankivsk National Technical University of Oil and Gas",
-      "specialty": "Economic of enterprises, Faculty of Economics and Management, Specialist",
+      "speciality": "Economic of enterprises, Faculty of Economics and Management, Specialist",
       "dates":"September 1998 - June 2003"
     },
     "training": [

@@ -26,7 +26,7 @@ class App extends Component {
                             <Link to={'/home'}>HOME</Link>
                         </li>
                         <li>
-                            <Link to={'/cv'}>CV</Link>
+                            <Link to={'/resume'}>RESUME</Link>
                         </li>
                         <li>
                             <Link to={'/photos'}>PHOTOS</Link>

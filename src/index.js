@@ -12,7 +12,7 @@ import sagas from './index-sagas';
 
 import App from './App';
 import Home from './home/home.index';
-import CV from './cv/cv';
+import Resume from './resume/resume.index';
 import Photos from './photos/photos.index'
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
@@ -27,7 +27,7 @@ ReactDOM.render(
         <Router history={history}>
             <Route path={'/'} component={App}>
                 <Route path={'/home'} component={Home}/>
-                <Route path={'/cv'} component={CV}/>
+                <Route path={'/resume'} component={Resume}/>
                 <Route path={'/photos'} component={Photos}/>
             </Route>
         </Router>

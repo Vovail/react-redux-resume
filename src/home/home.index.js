@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
+
+import Skills from '../shared/skills/skill';
+
 import './home.css';
 
 class Home extends Component {
@@ -12,7 +15,10 @@ class Home extends Component {
           fullname:PropTypes.string,
           generalInfo:PropTypes.array,
           skills:PropTypes.array,
-          showSkills:PropTypes.bool,
+          showSkills:PropTypes.oneOfType([
+              PropTypes.bool,
+              PropTypes.string
+          ]),
           showSkillsBtnLabel:PropTypes.string
       })
     };
@@ -38,14 +44,7 @@ class Home extends Component {
                     </ul>
                 </div>
                 <Button onClick={this.props.onShowSkills}>{this.props.data.showSkillsBtnLabel}</Button>
-                {this.props.data.showSkills && (<ul className="skills">
-                    {this.props.data.skills.map((item, index) => {
-                            return (<li className="list-group-item" key={index}>
-                                {item}
-                            </li>)
-                        }
-                    )}
-                </ul>)}
+                {this.props.data.showSkills && <Skills skills={this.props.data.skills}/>}
             </div>
         )
     }
