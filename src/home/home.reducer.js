@@ -11,7 +11,6 @@ const initialState = {
 function home(state = initialState, action) {
     switch (action.type) {
         case 'HOME_DATA_SUCCESS': {
-            console.log(action.payload);
             return {...state, ...action.payload};
         }
         case 'HOME_DATA_ERROR': {

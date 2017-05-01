@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Link, hashHistory} from 'react-router';
+import {Link, IndexLink} from 'react-router';
 import './App.css';
 import {Navbar, Nav} from 'react-bootstrap';
 
@@ -7,10 +7,6 @@ class App extends Component {
     static propTypes = {
         children: PropTypes.node
     };
-
-    componentDidMount() {
-        hashHistory.push('/home');
-    }
 
     render() {
         return (
@@ -23,13 +19,13 @@ class App extends Component {
                     </Navbar.Header>
                     <Nav>
                         <li>
-                            <Link to={'/home'}>HOME</Link>
+                            <IndexLink activeClassName='active' to={'/'}>HOME</IndexLink>
                         </li>
                         <li>
-                            <Link to={'/resume'}>RESUME</Link>
+                            <Link activeClassName='active' to={'/resume'}>RESUME</Link>
                         </li>
                         <li>
-                            <Link to={'/photos'}>PHOTOS</Link>
+                            <Link activeClassName='active' to={'/photos'}>PHOTOS</Link>
                         </li>
                     </Nav>
                 </Navbar>

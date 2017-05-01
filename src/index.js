@@ -4,7 +4,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 
 import reducers from './index-reducer';
@@ -26,10 +26,12 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Route path={'/'} component={App}>
-                <Route path={'/home'} component={Home}/>
+                {/*<Route path={'/home'} component={Home}/>*/}
                 <Route path={'/resume'} component={Resume}/>
                 <Route path={'/photos'} component={Photos}/>
+                <IndexRoute component={Home}/>
             </Route>
+            <Route path={'*'} component={Home}/>
         </Router>
     </Provider>,
     document.getElementById('root')

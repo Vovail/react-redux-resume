@@ -28,13 +28,14 @@ class Home extends Component {
     }
 
     render() {
+        const {data, onShowSkills} = this.props;
         return (
             <div className="home-container">
                 <div className="personal-info">
-                    <img className="photo" src={this.props.data.photoSrc} alt="photo of Volodymyr Ilemskyi"/>
-                    <h2 className="data-info fullname">{this.props.data.fullname}</h2>
+                    <img className="photo" src={data.photoSrc} alt="photo of Volodymyr Ilemskyi"/>
+                    <h2 className="data-info fullname">{data.fullname}</h2>
                     <ul className="data-info list-group">
-                        {this.props.data.generalInfo.map((item, index) => {
+                        {data.generalInfo.map((item, index) => {
                                 return (<li className="list-group-item" key={index}>
                                     <span className="data-header">{item.header}</span>
                                     <span className="data-value">{item.value}</span>
@@ -43,8 +44,8 @@ class Home extends Component {
                         )}
                     </ul>
                 </div>
-                <Button onClick={this.props.onShowSkills}>{this.props.data.showSkillsBtnLabel}</Button>
-                {this.props.data.showSkills && <Skills skills={this.props.data.skills}/>}
+                <Button onClick={onShowSkills}>{data.showSkillsBtnLabel}</Button>
+                {data.showSkills && <Skills skills={data.skills}/>}
             </div>
         )
     }
