@@ -1,11 +1,11 @@
 import {call, put, takeEvery, fork} from 'redux-saga/effects';
 import {delay} from 'redux-saga';
 import {getHomeData} from '../home/home.saga';
+import {setResumeDataError, setResumeDataSuccess, RESUME_DATA_REQUEST} from './resume.reducer';
 
 const resumeDataApi = () => {
     return fetch('data-resume.json')
         .then(response => {
-            console.log(response.body);
             return response.json()
         })
         .catch(error => {
@@ -17,9 +17,9 @@ const resumeDataApi = () => {
 function* getResumeData() {
     try {
         const resume = yield call(resumeDataApi);
-        yield put({type: 'RESUME_DATA_SUCCESS', payload: resume});
+        yield put(setResumeDataSuccess(resume));
     } catch (error) {
-        yield put({type: 'RESUME_DATA_ERROR', payload: error});
+        yield put(setResumeDataError(error));
     }
 }
 
@@ -30,5 +30,5 @@ function* resumeAll() {
 }
 
 export default function* photosDataWatcher() {
-    yield takeEvery('RESUME_DATA_REQUEST', resumeAll);
+    yield takeEvery(RESUME_DATA_REQUEST, resumeAll);
 }

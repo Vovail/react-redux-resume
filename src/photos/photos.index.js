@@ -1,10 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import { Carousel } from 'react-bootstrap';
+import {Carousel} from 'react-bootstrap';
+import {photosDispatch} from './photos.reducer';
 
 class Photos extends Component {
 
-    static propTypes={
+    static propTypes = {
         data: PropTypes.array
     };
 
@@ -16,9 +17,9 @@ class Photos extends Component {
         return (
             <div className="photos-container">
                 <Carousel>
-                    {this.props.data.map((picture)=>{
+                    {this.props.data.map((picture, index) => {
                         return (
-                            <Carousel.Item>
+                            <Carousel.Item key={index}>
                                 <img width={200} height={200} alt="200x200" src={picture}/>
                                 <Carousel.Caption>
                                     <p>"Photos" page was created only for demonstration routing and sagas</p>
@@ -32,13 +33,11 @@ class Photos extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    data: state.photos
+});
+
 export default connect(
-    state => ({
-        data: state.photos
-    }),
-    dispatch => ({
-        onPhotosMount: () => {
-            dispatch({type: 'PHOTOS_DATA_REQUEST'})
-        }
-    })
+    mapStateToProps,
+    photosDispatch
 )(Photos);

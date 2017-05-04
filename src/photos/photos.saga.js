@@ -1,9 +1,9 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
+import {setPhotoDataError,setPhotoDataSuccess, PHOTOS_DATA_REQUEST} from './photos.reducer';
 
 const homeDataApi = () => {
     return fetch('data-photos.json')
         .then(response => {
-            console.log(response.body);
             return response.json()})
         .catch(error=>{
             console.log(error);
@@ -14,12 +14,12 @@ const homeDataApi = () => {
 function* getHomeData () {
     try {
         let data = yield call(homeDataApi);
-        yield put({type: 'PHOTOS_DATA_SUCCESS', payload: data});
+        yield put(setPhotoDataSuccess(data));
     } catch(error) {
-        yield put({type: 'PHOTOS_DATA_ERROR', payload: error});
+        yield put(setPhotoDataError(error));
     }
 }
 
 export default function* homeDataWatcher() {
-    yield takeEvery('PHOTOS_DATA_REQUEST', getHomeData);
+    yield takeEvery(PHOTOS_DATA_REQUEST, getHomeData);
 }

@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Panel} from 'react-bootstrap';
 import './resume.css';
+import {resumeDispatch} from './resume.reducer';
 import Skills from '../shared/skills/skill';
 
 class Resume extends Component {
@@ -41,14 +42,15 @@ class Resume extends Component {
     }
 
     render() {
+        const {skills, resume:{work, education, otherInfo}} = this.props;
         return (
             <div className="resume-container">
                 <Panel collapsible header="Skills & Personal qualities">
-                    <Skills skills={this.props.skills}/>
+                    <Skills skills={skills}/>
                 </Panel>
                 <Panel collapsible header="Work Experience">
                     <ul className="skills">
-                        {this.props.resume.work.map((item, index) => {
+                        {work.map((item, index) => {
                                 return (<li className="list-group-item resume-list" key={index}>
                                     <h2>{item.employer}</h2>
                                     <h3>{item.position}</h3>
@@ -67,19 +69,19 @@ class Resume extends Component {
                 <Panel collapsible header="Educations">
                     <ul className="education">
                         <li className="list-group-item resume-list">
-                            <h3>{this.props.resume.education.it.school}</h3>
-                            <h4>{this.props.resume.education.it.speciality}</h4>
-                            <p>{this.props.resume.education.it.dates}</p>
+                            <h3>{education.it.school}</h3>
+                            <h4>{education.it.speciality}</h4>
+                            <p>{education.it.dates}</p>
                         </li>
                         <li className="list-group-item resume-list">
-                            <h3>{this.props.resume.education.main.school}</h3>
-                            <h4>{this.props.resume.education.main.speciality}</h4>
-                            <p>{this.props.resume.education.main.dates}</p>
+                            <h3>{education.main.school}</h3>
+                            <h4>{education.main.speciality}</h4>
+                            <p>{education.main.dates}</p>
                         </li>
                         <li className="list-group-item resume-list">
                             <h3>Trainings:</h3>
                             <ul>
-                                {this.props.resume.education.training.map((training, index) => (
+                                {education.training.map((training, index) => (
                                     <li key={index}>{training}</li>
                                 ))}
                             </ul>
@@ -89,8 +91,8 @@ class Resume extends Component {
                 <Panel collapsible header="Other info">
                     <ul className="other-info">
                         <li className="list-group-item resume-list">
-                            <span>{this.props.resume.otherInfo[0].header}: </span>
-                            <span>{this.props.resume.otherInfo[0].value}</span>
+                            <span>{otherInfo[0].header}: </span>
+                            <span>{otherInfo[0].value}</span>
                         </li>
                     </ul>
                 </Panel>
@@ -99,14 +101,12 @@ class Resume extends Component {
     }
 }
 
+const mapStateToProps = (state)=>({
+    skills: state.home.skills,
+    resume: state.resume
+});
+
 export default connect(
-    state => ({
-        skills: state.home.skills,
-        resume: state.resume
-    }),
-    dispatch => ({
-        onResumeMount: () => {
-            dispatch({type: 'RESUME_DATA_REQUEST'})
-        }
-    })
+    mapStateToProps,
+    resumeDispatch
 )(Resume);
