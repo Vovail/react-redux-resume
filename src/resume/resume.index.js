@@ -4,6 +4,7 @@ import {Panel} from 'react-bootstrap';
 import './resume.css';
 import {resumeDispatch} from './resume.reducer';
 import Skills from '../shared/skills/skill';
+import {createSelector} from 'reselect';
 
 class Resume extends Component {
 
@@ -42,7 +43,7 @@ class Resume extends Component {
     }
 
     render() {
-        const {skills, resume:{work, education, otherInfo}} = this.props;
+        const {skills, resume: {work, education, otherInfo}} = this.props;
         return (
             <div className="resume-container">
                 <Panel collapsible header="Skills & Personal qualities">
@@ -101,10 +102,17 @@ class Resume extends Component {
     }
 }
 
-const mapStateToProps = (state)=>({
-    skills: state.home.skills,
-    resume: state.resume
-});
+const getSkills = (state) => state.home.skills;
+const getResume = (state) => state.resume;
+const getReselected = createSelector([getSkills, getResume],
+    (skills, resume) => ({skills, resume}));
+
+// const mapStateToProps = (state)=>({
+//     skills: state.home.skills,
+//     resume: state.resume
+// });
+
+const mapStateToProps = (state) => getReselected(state);
 
 export default connect(
     mapStateToProps,
